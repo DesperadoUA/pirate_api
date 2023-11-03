@@ -1,7 +1,11 @@
 const Model = require('./models/index')
 class Service {
-	static async insert(data) {
-		const result = await Model.insert(data)
+	static async insertVisit(data) {
+		const result = await Model.insertVisit(data)
+		return { status: result }
+	}
+	static async insertAction(data) {
+		const result = await Model.insertAction(data)
 		return { status: result }
 	}
 }
