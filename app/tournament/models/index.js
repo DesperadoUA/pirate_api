@@ -17,7 +17,7 @@ class Model {
 		try {
 			const posts = await Model.getAllByTableName('Visits')
 			const candidate = posts.filter(item => item.includes(data.userID))
-			console.log(posts)
+			console.log(candidate)
 			if (!candidate.length) {
 				await sheets.spreadsheets.values.append({
 					spreadsheetId: SHEET_ID,
