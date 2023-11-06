@@ -16,6 +16,7 @@ router.post('/tournament/click', async (req, res) => {
 	})
 	res.status(200).json({ status: result })
 })
+/*
 router.get('/tournament/test', async (req, res) => {
 	const result = await Service.insertAction({
 		userID: 'testId2',
@@ -23,6 +24,7 @@ router.get('/tournament/test', async (req, res) => {
 	})
 	res.status(200).json({ status: result })
 })
+*/
 router.get('/tournament', async (req, res) => {
 	const result = await Service.index()
 	res.status(200).json(result)
