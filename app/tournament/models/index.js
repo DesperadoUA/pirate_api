@@ -17,16 +17,17 @@ class Model {
 		try {
 			const posts = await Model.getAllByTableName('Visits')
 			const candidate = posts.filter(item => item.includes(data.userID))
-			if (candidate.length) return 'ok'
-			await sheets.spreadsheets.values.append({
-				spreadsheetId: SHEET_ID,
-				range: 'Visits',
-				insertDataOption: 'INSERT_ROWS',
-				valueInputOption: 'RAW',
-				requestBody: {
-					values: [[data.userID, data.date]]
-				}
-			})
+			if (!candidate.length) {
+				await sheets.spreadsheets.values.append({
+					spreadsheetId: SHEET_ID,
+					range: 'Visits',
+					insertDataOption: 'INSERT_ROWS',
+					valueInputOption: 'RAW',
+					requestBody: {
+						values: [[data.userID, data.date]]
+					}
+				})
+			}
 			return 'ok'
 		} catch (error) {
 			return 'error'
@@ -36,16 +37,17 @@ class Model {
 		try {
 			const posts = await Model.getAllByTableName('Action')
 			const candidate = posts.filter(item => item.includes(data.userID))
-			if (candidate.length) return 'ok'
-			await sheets.spreadsheets.values.append({
-				spreadsheetId: SHEET_ID,
-				range: 'Action',
-				insertDataOption: 'INSERT_ROWS',
-				valueInputOption: 'RAW',
-				requestBody: {
-					values: [[data.userID, data.date]]
-				}
-			})
+			if (!candidate.length) {
+				await sheets.spreadsheets.values.append({
+					spreadsheetId: SHEET_ID,
+					range: 'Action',
+					insertDataOption: 'INSERT_ROWS',
+					valueInputOption: 'RAW',
+					requestBody: {
+						values: [[data.userID, data.date]]
+					}
+				})
+			}
 			return 'ok'
 		} catch (error) {
 			return 'error'
