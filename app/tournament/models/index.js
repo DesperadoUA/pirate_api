@@ -16,7 +16,7 @@ class Model {
 	static async insertVisit(data) {
 		try {
 			const posts = await Model.getAllByTableName('Visits')
-			const candidate = posts.filter(item => item.includes(parseInt(data.userID)))
+			const candidate = posts.filter(item => item.includes(String(data.userID)))
 			console.log(candidate, data.userID, posts)
 			if (!candidate.length) {
 				await sheets.spreadsheets.values.append({
@@ -37,7 +37,7 @@ class Model {
 	static async insertAction(data) {
 		try {
 			const posts = await Model.getAllByTableName('Action')
-			const candidate = posts.filter(item => item.includes(data.userID))
+			const candidate = posts.filter(item => item.includes(String(data.userID)))
 			if (!candidate.length) {
 				await sheets.spreadsheets.values.append({
 					spreadsheetId: SHEET_ID,
