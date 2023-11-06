@@ -1,4 +1,4 @@
-const Model = require('./models/index')
+const Model = require('./models')
 class Service {
 	static async insertVisit(data) {
 		const result = await Model.insertVisit(data)
