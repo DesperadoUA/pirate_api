@@ -1,8 +1,23 @@
-const { SHEET_ID } = require('./sheetClient.js')
-const { sheets } = require('./sheetClient.js')
+const { SHEET_ID } = require('./config.js')
+const { sheets } = require('../../../config/googleTableClient.js')
 class Model {
+	constructor() {
+		schemas = {
+			Visits: {
+				userId: ['unique'],
+				date: ['string']
+			},
+			Action: {
+				userId: ['unique'],
+				date: ['string']
+			}
+		}
+	}
 	static async insertVisit(data) {
 		try {
+			const posts = await Model.getAllByTableName('Visits')
+			const candidate = posts.filter(item => item.includes(data.userID))
+			if (candidate.length) return 'ok'
 			await sheets.spreadsheets.values.append({
 				spreadsheetId: SHEET_ID,
 				range: 'Visits',
@@ -19,6 +34,9 @@ class Model {
 	}
 	static async insertAction(data) {
 		try {
+			const posts = await Model.getAllByTableName('Action')
+			const candidate = posts.filter(item => item.includes(data.userID))
+			if (candidate.length) return 'ok'
 			await sheets.spreadsheets.values.append({
 				spreadsheetId: SHEET_ID,
 				range: 'Action',
@@ -29,6 +47,17 @@ class Model {
 				}
 			})
 			return 'ok'
+		} catch (error) {
+			return 'error'
+		}
+	}
+	static async getAllByTableName(tableName) {
+		try {
+			const result = await sheets.spreadsheets.values.get({
+				spreadsheetId: SHEET_ID,
+				range: tableName
+			})
+			return result.data.values
 		} catch (error) {
 			return 'error'
 		}
