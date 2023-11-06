@@ -1,4 +1,4 @@
 /node_modules
 /.idea
 .env
-/app/tournament/secrets.json
+/config/secrets.json

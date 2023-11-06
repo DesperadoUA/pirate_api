@@ -1,5 +1,5 @@
 const { google } = require('googleapis')
-const key = require('../../../config/secrets.json')
+const key = require('../..config/secrets.json')
 const SHEET_ID = '1WvbDNEYMLtjzDqjVRrN5bqQ6Z4XkyePOiiVT1wrtL-0'
 const client = new google.auth.JWT(key.client_email, null, key.private_key, [
 	'https://www.googleapis.com/auth/spreadsheets'
