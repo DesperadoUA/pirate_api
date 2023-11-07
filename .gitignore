@@ -1,4 +1,4 @@
 /node_modules
 /.idea
 .env
-/config/secrets.json
+secrets.json
