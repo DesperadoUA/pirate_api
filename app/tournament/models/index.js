@@ -30,6 +30,7 @@ class Model {
 			}
 			return 'ok'
 		} catch (error) {
+			console.log(error)
 			return 'error'
 		}
 	}
@@ -50,6 +51,7 @@ class Model {
 			}
 			return 'ok'
 		} catch (error) {
+			console.log(error)
 			return 'error'
 		}
 	}
@@ -61,6 +63,7 @@ class Model {
 			})
 			return result.data.values
 		} catch (error) {
+			console.log(error)
 			return 'error'
 		}
 	}
