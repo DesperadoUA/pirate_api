@@ -1,6 +1,6 @@
 const { SHEET_ID } = require('./config.js')
 const { sheets } = require('../../../config/googleTableClient.js')
-console.log(SHEET_ID)
+console.log(SHEET_ID, _NODE_ENV)
 class Model {
 	constructor() {
 		schemas = {
