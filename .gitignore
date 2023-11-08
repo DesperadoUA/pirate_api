@@ -2,3 +2,4 @@
 /.idea
 .env
 secrets.json
+cloudSecret.json

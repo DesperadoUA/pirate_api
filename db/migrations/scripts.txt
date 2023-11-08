@@ -1,0 +1,7 @@
+/* Your terminal need open in dir db */
+
+/* Create migration for post types */
+npx knex migrate:make casinos
+/* Create migration for post_meta */
+
+/* Create migration for category */
